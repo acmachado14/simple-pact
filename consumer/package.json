@@ -1,0 +1,18 @@
+{
+  "name": "acmachado14-pact-consumer",
+  "version": "1.0.0",
+  "dependencies": {
+    "axios": "^0.25.0"
+  },
+  "scripts": {
+    "test:consumer": "mocha --config test/contract/.mocharc.js",
+    "pact:publish": "pact-broker publish pacts/ --consumer-app-version=\"$(npx absolute-version)\" --auto-detect-version-properties --broker-base-url=http://0.0.0.0:9292/"
+  },
+  "devDependencies": {
+    "@pact-foundation/pact": "^9.17.3",
+    "axios-mock-adapter": "^1.20.0",
+    "chai": "4.3.4",
+    "mocha": "^10.0.0",
+    "prettier": "^2.4.1"
+  }
+}

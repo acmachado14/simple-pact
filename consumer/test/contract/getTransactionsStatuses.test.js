@@ -3,7 +3,7 @@
 const { expect } = require('chai')
 const { Matchers } = require("@pact-foundation/pact")
 
-const { getPerson } = require('../../src/api')
+const { getPerson } = require('../../src/consumer')
 
 describe('API Pact test - Integration between \'backend\' and \'frontend\'', () => {
   describe("GET /clients/:id", () => {

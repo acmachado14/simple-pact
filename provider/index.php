@@ -10,10 +10,10 @@ $app->addErrorMiddleware(false, true, false);
 
 $app->get("/person/{id}", function (Request $request, Response $response, array $args) {
     $body = [
-        "first_name" => "Dade",
-        "last_name" => "Murphy",
-        "alias" => "Zero Cool",
-        "age" => 26,
+        "first_name" => "Angelo",
+        "last_name" => "Machado",
+        "alias" => "gelin",
+        "age" => 19,
     ];
     $response = $response->withHeader("Content-Type", "application/json");
     $response->getBody()->write(json_encode($body));

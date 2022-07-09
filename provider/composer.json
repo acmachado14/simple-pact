@@ -1,0 +1,24 @@
+{
+    "name": "acmachado14/pact-provider",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Acmachado14\\PactProvider\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Angelo",
+            "email": "cupertinoangelo13@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "pact-foundation/pact-php": "^7.2",
+        "phpunit/phpunit": "^9.5"
+    },
+    "require": {
+        "slim/slim": "^4.10",
+        "slim/psr7": "^1.5",
+        "slim/http": "^1.2"
+    }
+}

@@ -41,13 +41,17 @@ O [consumer](./consumer) é a aplicação que consome a API, é o resposável po
 - Node JS
 - npm
 
+### Instalar
+ ```
+ npm install
+ ```
 ### Executar os testes
  ```
- make test-contract
+ npm run test:consumer
  ```
 ### Publicar o contrato
  ```
- make publish
+ npm run pact:publish
  ```
 
 ## Provider
@@ -57,7 +61,12 @@ O [provider](./provider) é a aplicação que promove a API, é o responsável p
 - PHP 8.0^
 - composer
 
+### Instalar
+ ```
+ composer install
+ ```
+
 ### Executar os testes
  ```
- make test-contract
+vendor/bin/phpunit
  ```

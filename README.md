@@ -17,7 +17,7 @@ Ele está longe de ser o ideal para ser usado em produções de software!
 Caso deseje um fluxo completo para sua aplicação recomendo o 
 [Nirvana para teste de contrato](https://github.com/PauloGoncalvesBH/nirvana-teste-de-contrato) que faz uso de CI para as etapas de verificação.  
 
-<img src=".github/fluxo-pact-broker.png" width="500px" height="300px"/>
+<img src=".github/fluxo-pact-broker.png" width="500px" height="400px"/>
 
 ## Pact Broker
 O [Pact Broker](./docker-compose) é o responsável pela comunicação entre os sistemas, garantido a execução dos testes 

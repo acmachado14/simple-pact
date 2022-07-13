@@ -11,9 +11,9 @@ class ConsumerTest extends TestCase
     public function testPersonConsumer()
     {
         $config = new VerifierConfig();
-        $config->setProviderName("personProvider")
+        $config->setProviderName("backend")
             ->setProviderVersion("1.0.0")
-            ->setProviderBaseUrl(new Uri("http://localhost:8080"))
+            ->setProviderBaseUrl(new Uri("http://127.0.0.1:8000"))
             ->setBrokerUri(new Uri("http://localhost:9292"))
             ->setPublishResults(true);
 

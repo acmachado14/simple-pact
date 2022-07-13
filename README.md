@@ -58,12 +58,17 @@ O [consumer](./consumer) é a aplicação que consome a API, é o resposável po
 O [provider](./provider) é a aplicação que promove a API, é o responsável por enviar os dados requisitados pelo consumer.
 
 #### Pré-requisitos
-- PHP 8.0^
+- PHP
 - composer
 
 ### Instalar
  ```
  composer install
+ ```
+ 
+### Subir a aplicação
+ ```
+ php -S localhost:8000
  ```
 
 ### Executar os testes

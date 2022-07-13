@@ -16,19 +16,15 @@ describe('API Pact test - Integration between \'backend\' and \'frontend\'', () 
 
     before (async () => {
       await mockProvider.addInteraction({
-        state: "i have person with id 1",
         uponReceiving: "a request for person with id 1",
         withRequest: {
           method: "GET",
-          path: "/person/1",
-          headers: {
-            Accept: "application/json, text/plain, */*",
-          },
+          path: "/person/1"
         },
         willRespondWith: {
           status: 200,
           headers: {
-            "Content-Type": "application/json; charset=utf-8",
+            "Content-Type": "application/json",
           },
           body: Matchers.like(expectedBody),
         },
@@ -37,7 +33,7 @@ describe('API Pact test - Integration between \'backend\' and \'frontend\'', () 
 
     it("returns correct body, header and statusCode", async () => {
       const response = await getPerson(1)
-      expect(response.headers['content-type']).to.equal("application/json; charset=utf-8")
+      expect(response.headers['content-type']).to.equal("application/json")
       expect(response.data).to.deep.equal(expectedBody)
       expect(response.status).to.equal(200)
     })

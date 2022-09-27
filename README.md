@@ -6,7 +6,7 @@
 
 # Descrição
 
-Esse repositorio tem como obejtivo exemplificar de uma forma simples e prática a execução dos testes de contrato com 
+Esse repositorio tem como objetivo exemplificar de uma forma simples e prática a execução dos testes de contrato com 
 Pact utilizando linguagens diferentes para cada aplicação. 
 
 

@@ -16,14 +16,10 @@ describe('API Pact test - Integration between \'backend\' and \'frontend\'', () 
 
     before (async () => {
       await mockProvider.addInteraction({
-        state: "i have person with id 1",
         uponReceiving: "a request for person with id 1",
         withRequest: {
           method: "GET",
-          path: "/person/1",
-          headers: {
-            Accept: "application/json, text/plain, */*",
-          },
+          path: "/person/1"
         },
         willRespondWith: {
           status: 200,

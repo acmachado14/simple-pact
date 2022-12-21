@@ -6,7 +6,7 @@
   },
   "scripts": {
     "test:consumer": "mocha --config test/contract/.mocharc.js",
-    "pact:publish": "pact-broker publish pacts/ --consumer-app-version=\"$(npx absolute-version)\" --auto-detect-version-properties --broker-base-url=http://0.0.0.0:9292/"
+    "pact:publish": "pact-broker publish pacts/ --consumer-app-version=1.0.0 --broker-base-url=http://pact_broker:9292/"
   },
   "devDependencies": {
     "@pact-foundation/pact": "^9.17.3",

@@ -38,12 +38,15 @@ docker-compose up
 O [consumer](./consumer) é a aplicação que consome a API, é o resposável por fazer a requisições dos dados para o provider. 
 
 #### Pré-requisitos
-- Node JS
-- npm
+- Docker
 
 ### Instalar
  ```
- npm install
+ make build
+ ```
+### Executar terminal via docker
+ ```
+ make run-it
  ```
 ### Executar os testes
  ```
@@ -60,11 +63,6 @@ O [provider](./provider) é a aplicação que promove a API, é o responsável p
 #### Pré-requisitos
 - PHP
 - composer
-
-### Instalar
- ```
- composer install
- ```
  
 ### Subir a aplicação
  ```

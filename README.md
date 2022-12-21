@@ -1,75 +1,75 @@
 <div align="center">
-  <h1>Teste de Contrato com Pact</h1>
+  <h1>Contract Testing with Pact</h1>
 </div>
 <br>
 
 
-# Descrição
+# Description
 
-Esse repositorio tem como objetivo exemplificar de uma forma simples e prática a execução dos testes de contrato com 
-Pact utilizando linguagens diferentes para cada aplicação. 
+This repository aims to exemplify, in a simple and practical way, the execution of contract tests with
+Pact using different languages for each application. 
 
 
-# Fluxo
+# Flow
 
-O fluxo utilizado é o mais simples possível para realizar a comunicação dos testes do provider e consumer. 
-Ele está longe de ser o ideal para ser usado em produções de software! 
-Caso deseje um fluxo completo para sua aplicação recomendo o 
-[Nirvana para teste de contrato](https://github.com/PauloGoncalvesBH/nirvana-teste-de-contrato) que faz uso de CI para as etapas de verificação.  
+The flow used is as simple as possible to carry out the communication of the provider and consumer tests.
+It is far from ideal for use in software productions!
+If you want a complete flow for your application, I recommend
+[Nirvana for contract test](https://github.com/PauloGoncalvesBH/nirvana-teste-de-contrato) which makes use of CI for verification steps.
 
 <img src=".github/fluxo-pact-broker.png" width="500px" height="400px"/>
 
 ## Pact Broker
-O [Pact Broker](docker-compose.yml) é o responsável pela comunicação entre os sistemas, garantido a execução dos testes 
-em ambos os lados. Sendo assim, o consumer envia o contrato contendo as informações que ele espera receber em uma determinada rota
-e o provider baixa esse contrato, executa-o localmente verificando se os dados estão sendo enviados da forma esperada e devolve
-os resultados do teste para o Pact Broker.
+The [Pact Broker](docker-compose.yml) is responsible for the communication between the systems, ensuring the execution of the tests
+On both sides. Thus, the consumer sends the contract containing the information he expects to receive on a given route.
+and the provider downloads this contract, executes it locally, checking if the data is being sent as expected and returns
+test results for the Pact Broker.
 
-### Pré-requisitos
+### Prerequisites
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker-compose](https://docs.docker.com/compose/install/)
 
-### Executar Pact Broker
+### Run Pact Broker
  ```
 docker-compose up
  ```
 
 ## Consumer
-O [consumer](./consumer) é a aplicação que consome a API, é o resposável por fazer a requisições dos dados para o provider. 
+O [consumer](./consumer) it is the application that consumes the API, it is responsible for making data requests to the provider.
 
-#### Pré-requisitos
+#### Prerequisites
 - Docker
 
-### Instalar
+### Install
  ```
  make build
  ```
-### Executar terminal via docker
+### Run terminal in docker
  ```
  make run-it
  ```
-### Executar os testes
+### Run tests
  ```
  npm run test:consumer
  ```
-### Publicar o contrato
+### Publish the contract
  ```
  npm run pact:publish
  ```
 
 ## Provider
-O [provider](./provider) é a aplicação que promove a API, é o responsável por enviar os dados requisitados pelo consumer.
+The [provider](./provider) is the application that promotes the API, is responsible for sending the data requested by the consumer.
 
-#### Pré-requisitos
+#### Prerequisites
 - PHP
 - composer
  
-### Subir a aplicação
+### Up the application
  ```
  php -S localhost:8000
  ```
 
-### Executar os testes
+### Run tests
  ```
 vendor/bin/phpunit
  ```

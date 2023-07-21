@@ -45,8 +45,6 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.1
-      - run: make install_pact_php
-      - run: make test_pact_php_consumer
       - run: npm install
         working-directory: consumer
       - run: npm run test:consumer

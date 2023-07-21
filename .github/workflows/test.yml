@@ -1,0 +1,65 @@
+name: Build
+
+on:
+  push:
+  workflow_dispatch:
+
+env:
+  PGUSER: postgres
+  PGPASSWORD: postgres
+  PGDATABASE: postgres
+  PGHOST: localhost
+  POSTGRES_REP_USER: reptest
+  POSTGRES_REP_PASSWORD: reptest
+  PACT_BROKER_BASE_URL: http://0.0.0.0:8000
+  PACT_BROKER_USERNAME: pact_workshop
+  PACT_BROKER_PASSWORD: pact_workshop
+
+jobs:
+  test:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v3
+    #   - name: "Installing Pact CLI Tools"
+    #     run: |
+    #       echo "Installing Pact CLI Tools"
+    #       echo "=> downloading Pact CLI Tools"
+    #       os='linux-x86_64'
+    #       tag=$(basename $(curl -fs -o/dev/null -w %{redirect_url} https://github.com/pact-foundation/pact-ruby-standalone/releases/latest))
+    #       filename="pact-${tag#v}-${os}.tar.gz"
+    #       standalone_download_path=https://github.com/pact-foundation/pact-ruby-standalone/releases/download/${tag}/${filename}
+    #       echo "from ${standalone_download_path}"
+    #       curl -LO ${standalone_download_path}
+    #       tar xzf ${filename}
+    #       rm ${filename}
+    #       echo "PATH=${PATH}:${PWD}/pact/bin/" >> $GITHUB_ENV
+    #   - run: pact help
+      - name: Start OSS Pact Broker
+        run: docker-compose up -d
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.1
+      - run: make install_pact_php
+      - run: make test_pact_php_consumer
+      - run: npm install
+        working-directory: consumer
+      - run: npm run test:consumer
+        working-directory: consumer
+      - run: npm run pact:publish
+        working-directory: consumer
+      - run: composer install
+        working-directory: provider
+      - run: php -S localhost:8000 &
+        working-directory: provider
+      - run: vendor/bin/phpunit
+        working-directory: provider
+      - run: make test_pact_php_provider
+      - name: Stop docker
+        if: always()
+        run: docker-compose down

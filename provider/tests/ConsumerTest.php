@@ -8,12 +8,14 @@ use PHPUnit\Framework\TestCase;
 
 class ConsumerTest extends TestCase
 {
+
     public function testPersonConsumer()
     {
         $config = new VerifierConfig();
         $config->setProviderName("backend")
-            ->setProviderVersion("1.0.0")
-            ->setProviderBaseUrl(new Uri("http://127.0.0.1:8000"))
+            ->setProviderVersion(exec('git rev-parse --short HEAD'))
+            ->setProviderBranch(exec('git rev-parse --abbrev-ref HEAD'))
+            ->setProviderBaseUrl(new Uri("http://localhost:8000"))
             ->setBrokerUri(new Uri("http://localhost:9292"))
             ->setPublishResults(true);
 

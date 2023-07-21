@@ -6,10 +6,10 @@
   },
   "scripts": {
     "test:consumer": "mocha --config test/contract/.mocharc.js",
-    "pact:publish": "pact-broker publish pacts/ --consumer-app-version=1.0.0 --broker-base-url=http://pact_broker:9292/"
+    "pact:publish": "pact-broker publish pacts/ --consumer-app-version=$(git rev-parse --short HEAD) --branch $(git rev-parse --abbrev-ref HEAD) --broker-base-url=http://localhost:9292/"
   },
   "devDependencies": {
-    "@pact-foundation/pact": "^9.17.3",
+    "@pact-foundation/pact": "^12.1.0",
     "axios-mock-adapter": "^1.20.0",
     "chai": "4.3.4",
     "mocha": "^10.0.0",

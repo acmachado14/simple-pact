@@ -13,12 +13,17 @@
         }
     ],
     "require-dev": {
-        "pact-foundation/pact-php": "^7.2",
+        "pact-foundation/pact-php": "^9.0",
         "phpunit/phpunit": "^9.5"
     },
     "require": {
         "slim/slim": "^4.10",
         "slim/psr7": "^1.5",
         "slim/http": "^1.2"
+    },
+    "config": {
+        "allow-plugins": {
+            "tienvx/composer-downloads-plugin": true
+        }
     }
 }

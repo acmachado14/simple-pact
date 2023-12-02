@@ -30,7 +30,6 @@ describe('API Pact test - Integration between \'backend\' and \'frontend\'', () 
 
     it("returns correct body, header and statusCode", async () => {
       const response = await getPerson(1)
-      //expect(response.headers['content-type']).to.equal("application/json; charset=utf-8")
       expect(response.data).to.deep.equal(expectedBody)
       expect(response.status).to.equal(200)
     })

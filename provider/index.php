@@ -20,4 +20,20 @@ $app->get("/person/{id}", function (Request $request, Response $response, array 
     return $response;
 });
 
+$app->post("/sum", function (Request $request, Response $response, array $args) {
+    $data = $request->getParsedBody();
+
+    if (isset($data['number1']) && isset($data['number2'])) {
+        $number1 = (int) $data['number1'];
+        $number2 = (int) $data['number2'];
+        $sum = $number1 + $number2;
+        $response->getBody()->write(json_encode(['result' => $sum]));
+        return $response->withStatus(200)->withHeader('Content-Type', 'application/json');
+    }
+    $errorResponse = ['error' => 'Please provide the numbers "number1" and "number2"'];
+    $response->getBody()->write(json_encode($errorResponse));
+
+    return $response->withStatus(400)->withHeader('Content-Type', 'application/json');
+});
+
 $app->run();

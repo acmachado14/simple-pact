@@ -1,14 +1,19 @@
-"use strict"
+"use strict";
 
-const { expect } = require('chai')
-const { Matchers } = require("@pact-foundation/pact")
+const { expect } = require("chai");
+const { Matchers } = require("@pact-foundation/pact");
 
-const { sum } = require('../../src/consumer')
+const { sum } = require("../../src/consumer");
 
-describe('API Pact test', () => {
+describe("API Pact test", () => {
   describe("POST /sum", () => {
     const expectedBody = {
       result: 30,
+    };
+
+    const requestPayload = {
+      number1: Matchers.somethingLike(10),
+      number2: Matchers.somethingLike(20),
     };
 
     before(async () => {
@@ -17,10 +22,7 @@ describe('API Pact test', () => {
         withRequest: {
           method: "POST",
           path: "/sum",
-          body: {
-            number1: 10,
-            number2: 20,
-          },
+          body: requestPayload,
         },
         willRespondWith: {
           status: 200,

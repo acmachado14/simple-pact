@@ -7,13 +7,12 @@
   "scripts": {
     "test:consumer": "mocha --config test/contract/.mocharc.js",
     "pact:publish": "pact-broker publish pacts/ --consumer-app-version=1.0.0 --broker-base-url=http://localhost:9292/"
-
   },
   "devDependencies": {
     "@pact-foundation/pact": "^12.1.0",
     "axios-mock-adapter": "^1.20.0",
     "chai": "4.3.4",
-    "mocha": "^10.0.0",
-    "prettier": "^2.4.1"
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^10.0.0"
   }
 }
